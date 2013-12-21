@@ -9,8 +9,6 @@ import cgrafica.AlgoritmoCores;
 import cgrafica.AlgoritmoCores.OrigemCarro;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.media.opengl.GL2;
 
 /**
@@ -19,7 +17,6 @@ import javax.media.opengl.GL2;
  */
 public class Road {
 
-    private static final int FRAMES_PER_SECOND = 5;
     //available colors for sources
     private static final Color[] colors = new Color[]{
         Color.BLUE,
@@ -164,7 +161,7 @@ public class Road {
     private void draw() {
         //draw all the roads first so the cars show properly
         for (Segment s : road) {
-            s.drawRoad(gl);
+            s.drawSegment(gl);
         }
 
         // draw all the cars from the front to the back

@@ -8,7 +8,8 @@ package graphics;
 import java.awt.Color;
 import javax.media.opengl.GL2;
 
-class Segment
+//TODO: remove public
+public class Segment
 {
 
     // (Car.LENGTH + 2)
@@ -33,7 +34,6 @@ class Segment
 	this.x = x;
 	this.y = y;
 	this.z = z;
-	angle = 0;
     }
 
     public Car getCarLeft()
@@ -96,6 +96,7 @@ class Segment
     {
 
 	gl.glTranslatef(x, y, z);
+	gl.glRotatef(angle, 0, 1, 0);
 	gl.glBegin(GL2.GL_POLYGON);
 
 	// white
@@ -113,6 +114,7 @@ class Segment
 	{
 	    this.drawSource(gl);
 	}
+	gl.glRotatef(-angle, 0, 1, 0);
 
     }
 
@@ -134,6 +136,7 @@ class Segment
 	res.setCarRight(carRight);
 	res.setIsSource(isSource);
 	res.setColor(color);
+	res.setAngle(angle);
 	return res;
     }
 
@@ -183,14 +186,10 @@ class Segment
 	segmentCar.draw(gl);
 	
 	
-
-	
-	
-	
-	
-	
     }
 
+ 
+    
     public void setColor(Color color)
     {
 	this.color = color;

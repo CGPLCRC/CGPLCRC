@@ -6,6 +6,7 @@
 package cgrafica;
 
 import graphics.Road;
+import graphics.Segment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -34,14 +35,14 @@ public class StaticListener
     protected float right = 10;
     protected float top = 10;
     protected float bottom = -10;
-    protected float far = 95;
+    protected float far = 195;
     protected float near = 1;
     /**
      * Camera coordinates.
      */
     protected float[] eye = new float[]
     {
-	0, 20, 20
+	0, 100, -50
     };
     double zRotationAngle = 0;
     /**
@@ -49,14 +50,14 @@ public class StaticListener
      */
     protected float[] center = new float[]
     {
-	0, 0, 0
+	0, 0, -50
     };
     /**
      * Up vector used when setting the camera properties.
      */
     protected float[] up = new float[]
     {
-	0, 1, 0
+	0, 0, -1
     };
     /**
      * The OpenGL AWT component that this listener is attached to.
@@ -253,6 +254,42 @@ public class StaticListener
     @Override
     public void keyReleased(KeyEvent ke)
     {
+	switch (ke.getKeyChar())
+	{
+	    case '1':
+		road.toggleSourceAt(1, 2);
+		break;
+	    case '2':
+		road.toggleSourceAt(2, 2);
+		break;
+	    case '3':
+		road.toggleSourceAt(3, 2);
+		break;
+	    case '4':
+		road.toggleSourceAt(4, 2);
+		break;
+	    case '5':
+		road.toggleSourceAt(5, 2);
+		break;
+	    case '6':
+		road.toggleSourceAt(6, 2);
+		break;
+	    case '7':
+		road.toggleSourceAt(7, 2);
+		break;
+	    case '8':
+		road.toggleSourceAt(8, 2);
+		break;
+	    case '9':
+		road.toggleSourceAt(9, 2);
+		break;
+		
+	    default:
+		break;
+		
+	}
+	
+	
     }
 
     /**

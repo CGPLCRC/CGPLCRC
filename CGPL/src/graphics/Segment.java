@@ -17,9 +17,10 @@ class Segment
     public static final float WIDTH = 12;
     public static final float HEIGHT = 0;
     
-    //TODO: wont be final on v2
     // center of the segment
-    private final float x, y, z;
+    private float x, y, z;
+
+    private float angle;
 
     private Car carLeft, carRight;
 
@@ -32,6 +33,7 @@ class Segment
 	this.x = x;
 	this.y = y;
 	this.z = z;
+	angle = 0;
     }
 
     public Car getCarLeft()
@@ -51,6 +53,7 @@ class Segment
 	{
 	    //set car in the correct position
 	    carLeft.setCenter(x - Car.LENGTH/2, y + Car.HEIGHT/2, z);
+	    carLeft.setAngle(angle);
 	}
 	this.carLeft = carLeft;
 
@@ -62,6 +65,7 @@ class Segment
 	{
 	    //set car in the correct position
 	    carRight.setCenter(x + Car.LENGTH/2, y + Car.HEIGHT/2, z);
+	    carRight.setAngle(angle);
 	}
 	this.carRight = carRight;
     }
@@ -192,6 +196,14 @@ class Segment
 	this.color = color;
     }
     
-    
+        public float getAngle()
+    {
+	return angle;
+    }
+
+    public void setAngle(float angle)
+    {
+	this.angle = angle;
+    }
 
 }

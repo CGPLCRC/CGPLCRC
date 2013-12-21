@@ -11,7 +11,7 @@ class Car
     
     //Center of the object
     private float x, y, z;
-    private float angle = 0;
+    private float angle;
     // Color in RGB
     private float r, g, b;
     
@@ -21,6 +21,7 @@ class Car
 	this.r = c.getRed()/255;
 	this.g = c.getGreen()/255;
 	this.b = c.getBlue()/255;
+	this.angle = 0;
     }
 
     public void setCenter(float x, float y, float z)

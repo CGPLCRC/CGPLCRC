@@ -43,9 +43,22 @@ public class Road {
     private GL2 gl;
 
     public Road() {
-
+        sources = new ArrayList<>();
+	emissions = new ArrayList<>();
+	
+	
+	//TODO: mexer nisto
         int inputTamanho = 10;
+	sources.add(1);
+        sources.add(4);
+        sources.add(5);
+	emissions.add(2);
+        emissions.add(4);
+        emissions.add(5);
+	straight = true;
 
+	////////////////////////////////////////////
+	
         //soma de 2 segmentos extremos
         size = inputTamanho + 2;
         road = new ArrayList<>();
@@ -53,19 +66,12 @@ public class Road {
             Segment s = new Segment(0, 0, (-8) * i);
             road.add(s);
         }
-        straight = true;
-        sources = new ArrayList<>();
-        sources.add(1);
-        sources.add(4);
-        sources.add(5);
+        
         for (int i : sources) {
             road.get(i).setIsSource(true);
             road.get(i).setColor(colors[i]);
         }
-        emissions = new ArrayList<>();
-        emissions.add(2);
-        emissions.add(4);
-        emissions.add(5);
+
         tick = 0;
         alg = AlgoritmoCores.getInstance();
     }

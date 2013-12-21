@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
@@ -67,6 +69,9 @@ public class StaticListener
     private int width;
     private int height;
     private Road road;
+    private boolean simulationMode;
+    private static final int INTERVAL_SECONDS = 1;
+    private Timer timer;
 
     StaticListener(GLCanvas canvas, Road road)
     {
@@ -256,6 +261,9 @@ public class StaticListener
     {
 	switch (ke.getKeyChar())
 	{
+	    case '\\':
+		toggleMovement();
+		break;
 	    case '1':
 		road.toggleSourceAt(1, 2);
 		break;
@@ -305,7 +313,6 @@ public class StaticListener
 	System.out.format("   Eye:  ( %5.1f , %5.1f , %5.1f )\n", this.eye[0], this.eye[1], this.eye[2]);
 	System.out.format("Center:  ( %5.1f , %5.1f , %5.1f )\n", this.center[0], this.center[1], this.center[2]);
 	System.out.format("    Up:  ( %5.1f , %5.1f , %5.1f )\n", this.up[0], this.up[1], this.up[2]);
-	System.out.format(" angle: %3f\n", this.zRotationAngle);
     }
 
     @Override
@@ -328,6 +335,31 @@ public class StaticListener
     {
 
 	return Utils.move(cameraX, cameraY, centerX, centerY, false, speed);
+    }
+
+     public void toggleMovement()
+    {
+
+	if (!simulationMode)
+	{
+	    simulationMode = true;
+	    timer = new Timer();
+	    timer.schedule(new TimerTask()
+	    {
+		@Override
+		public void run()
+		{
+		    road.tick();
+		    //this.canvas.display();
+		    canvas.display();
+		}
+	    }, INTERVAL_SECONDS * 1000, INTERVAL_SECONDS * 1000);
+	}else
+	{
+	    simulationMode = false;
+	    timer.cancel();
+	}
+
     }
 
 }

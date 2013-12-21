@@ -9,7 +9,6 @@ import cgrafica.AlgoritmoCores;
 import cgrafica.AlgoritmoCores.OrigemCarro;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.media.opengl.GL2;
 
 /**
@@ -32,6 +31,7 @@ public class Road
 
     };
 
+    private boolean simulationMode;
     private ArrayList<Segment> road;
     private int size;
     private boolean straight;
@@ -77,6 +77,7 @@ public class Road
 
 	tick = 0;
 	alg = AlgoritmoCores.getInstance();
+	simulationMode = false;
     }
 
     public void toggleSourceAt(int pos, int emissionTime)
@@ -218,5 +219,7 @@ public class Road
     {
 	tick++;
     }
+
+   
 
 }

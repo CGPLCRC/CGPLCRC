@@ -9,12 +9,6 @@ import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 
-/**
- * Create a window with a single canvas component. An instance of
- * {@literal StaticListener} is responsible for handling OpenGL and key events.
- *
- * @author Pedro Mariano
- */
 public class Main {
 
     static public void main(String[] args) throws InterruptedException {
@@ -42,11 +36,11 @@ public class Main {
         canvas.addKeyListener(listener);
 
 
-        while (true) {
+        /*while (true) {
             road.tick();
             canvas.display();
             TimeUnit.MILLISECONDS.sleep(500);
-        }
+        }*/
 
     }
 

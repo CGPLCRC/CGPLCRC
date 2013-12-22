@@ -349,7 +349,8 @@ public class StaticListener
 		@Override
 		public void run()
 		{
-		    road.tick();
+			
+		    road.tick(true);
 		    //this.canvas.display();
 		    canvas.display();
 		}

@@ -1,10 +1,12 @@
 package cgrafica;
-
 import graphics.Road;
-
+import javax.swing.Timer;
+import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Toolkit;
@@ -17,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 import javax.media.nativewindow.WindowClosingProtocol;
@@ -39,10 +42,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
@@ -54,13 +61,19 @@ import javax.swing.SwingConstants;
  * 
  * @author Pedro Mariano
  */
-public class Main extends JFrame {
-
-	static public void main(String[] args) throws IOException {
-		new Main();
-		simulate();
+public class Main extends JFrame implements ActionListener{
+	
+	private JMenuItem start = new JMenuItem("Start");
+	private JMenuItem pause = new JMenuItem("Pause");
+	private JMenuItem exit = new JMenuItem("Exit");
+	
+	
+	public static void main(String[] args) throws IOException {
+	Main a = new Main();
+		a.simulate();
 	}
 
+    	
 	public Main() {
 
 		final JFrame frameP = new JFrame("Highway Simulation");
@@ -146,10 +159,10 @@ public class Main extends JFrame {
 	
 	private static boolean isread = false;
 	private boolean breakes = false;
-	
-	public static void simulate() throws IOException {
+	private boolean pauseFont = false;
+	public  void simulate() throws IOException {
 		if (!isread){
-                    readFile("estrada");
+			readFile("estrada");
 		}
 		
 		GLProfile glp = GLProfile.getDefault();
@@ -158,16 +171,28 @@ public class Main extends JFrame {
 
 		// frameP.dispose();
 
-		Frame frame = new JFrame(
+		JFrame frame = new JFrame(
 				"Controlo da câmara e dos parâmetros da projecção");
 	
 
-		frame.setSize(300, 300);
-		frame.add(canvas);
-		
-		frame.setVisible(true);
 		
 
+		
+		JMenuBar mb = new JMenuBar();	
+		
+		JMenu file = new JMenu("File");
+		exit.addActionListener(this);
+		start.addActionListener(this);
+		pause.addActionListener(this);
+		file.add(exit);
+		file.add(start);
+		file.add(pause);
+                mb.add(file);
+		
+		frame.setJMenuBar(mb);
+		frame.setSize(300, 300);
+		frame.add(canvas);		
+		frame.setVisible(true);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -181,13 +206,17 @@ public class Main extends JFrame {
 		listener = new StaticListener(canvas, road);
 		canvas.addGLEventListener(listener);
 		canvas.addKeyListener(listener);
-
+		
 		while (true) {
-			road.tick();
-			canvas.display();
-
+			
+			road.tick(pauseFont);
+			
+			canvas.display();	
+		
 			try {
+				
 				TimeUnit.MILLISECONDS.sleep(500);
+				
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -258,5 +287,23 @@ public class Main extends JFrame {
             i++;
         }
 		in.close();
+	}
+	
+	public void actionPerformed(ActionEvent E){
+		if(E.getSource() == exit) {
+			System.exit(0);
+		}
+		if(E.getSource() == pause) {
+			pauseFont = true;
+		}
+		if(E.getSource() == start) {
+			pauseFont = false;
+		}
+	}
+	public static int getSegmento(){
+		return segmento;
 	}	
+
 }
+
+

@@ -1,48 +1,24 @@
 package cgrafica;
 import graphics.Road;
-import javax.swing.Timer;
-import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
-
-import javax.media.nativewindow.WindowClosingProtocol;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-
 import javax.swing.ImageIcon;
-import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JFileChooser;
@@ -50,7 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 
@@ -73,8 +48,7 @@ public class Main extends JFrame implements ActionListener{
 
     	
 	public Main() {
-
-		final JFrame frameP = new JFrame("Highway Simulation");
+        	final JFrame frameP = new JFrame("Highway Simulation");
 		frameP.setSize(1086, 1000);
 		frameP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// center window
@@ -162,7 +136,6 @@ public class Main extends JFrame implements ActionListener{
 		if (!isread){
 			readFile("estrada");
 		}
-		
 		GLProfile glp = GLProfile.getDefault();
 		GLCapabilities caps = new GLCapabilities(glp);
 		GLCanvas canvas = new GLCanvas(caps);
@@ -173,9 +146,9 @@ public class Main extends JFrame implements ActionListener{
 		exit.addActionListener(this);
 		start.addActionListener(this);
 		pause.addActionListener(this);
-		file.add(exit);
-		file.add(pause);
 		file.add(start);
+		file.add(pause);
+		file.add(exit);
 		mb.add(file);
 		
 		frame.setJMenuBar(mb);
@@ -213,8 +186,11 @@ public class Main extends JFrame implements ActionListener{
 		}
 	}
 	
-	public static int [][] font = new int [3][3];
+	
+        
+        
 	static int  segmento;
+	public static int [][] font;	
 	private void browser() throws IOException {
 		isread = true;
 		JFileChooser chooser = new JFileChooser();
@@ -267,6 +243,7 @@ public class Main extends JFrame implements ActionListener{
 		int i = 0;
 		int j = 0;
 		segmento = Integer.parseInt(in.readLine());
+		font = new int [segmento][2];
 		while ((line = in.readLine()) != null) {
             j = 0;
             for (String token : line.split("\\s*[ ]\\s*")) {
@@ -289,13 +266,14 @@ public class Main extends JFrame implements ActionListener{
 			pauseFont = false;
 		}
 	}
+	
 	public static int getSegmento(){
 		return segmento;
 	}
-	public int [][] matriz(){
-		return font;
-	}
 	
+	public static int [][] matriz(){
+		return font;
+	}	
 }
 
 

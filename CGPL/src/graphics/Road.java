@@ -44,8 +44,6 @@ public class Road {
 		sources = new ArrayList<>();
 		emissions = new ArrayList<>();
 
-		// TODO: mexer nisto
-
 		int inputTamanho = Main.getSegmento();
 
 		

@@ -8,8 +8,8 @@ package graphics;
 import java.awt.Color;
 import javax.media.opengl.GL2;
 
-//TODO: remove public
-public class Segment
+
+class Segment
 {
 
     // (Car.LENGTH + 2)

@@ -6,7 +6,6 @@
 package cgrafica;
 
 import graphics.Road;
-import graphics.Segment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -83,7 +82,6 @@ public class StaticListener
     @Override
     public void init(GLAutoDrawable glad)
     {
-	//TODO: DepthBuffer não funciona a 100%
 	
 	 GL2 gl = glad.getGL().getGL2();
 	 gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -105,7 +103,6 @@ public class StaticListener
     public void display(GLAutoDrawable drawable)
     {
 	GL2 gl = drawable.getGL().getGL2();
-	//TODO: DepthBuffer não funciona a 100%	
 	gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
 	//gl.glClear(GL.GL_COLOR_BUFFER_BIT);
 	gl.glLoadIdentity();

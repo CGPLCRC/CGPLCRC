@@ -187,8 +187,6 @@ public class Segment
 	
 	
     }
-
- 
     
     public void setColor(Color color)
     {

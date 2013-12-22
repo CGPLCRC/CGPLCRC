@@ -44,7 +44,7 @@ public class StaticListener
      */
     protected float[] eye = new float[]
     {
-	0, 100, -50
+	0, 20, 20
     };
     double zRotationAngle = 0;
     /**
@@ -52,14 +52,14 @@ public class StaticListener
      */
     protected float[] center = new float[]
     {
-	0, 0, -50
+	0, 0, 0
     };
     /**
      * Up vector used when setting the camera properties.
      */
     protected float[] up = new float[]
     {
-	0, 0, -1
+	0, 1, 0
     };
     /**
      * The OpenGL AWT component that this listener is attached to.

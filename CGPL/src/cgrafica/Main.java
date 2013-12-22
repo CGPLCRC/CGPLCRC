@@ -72,7 +72,7 @@ public class Main extends JFrame implements ActionListener{
 		button3.setBounds(260, 700, 100, 50);
 		frameP.setLayout(new BorderLayout());
 		frameP.setContentPane(new JLabel(new ImageIcon(
-				"C:\\Users\\Rodolfo\\Desktop\\highway.jpg")));
+				"highway.jpg")));
 
 		frameP.setLayout(new BorderLayout());
 		frameP.add(button1, BorderLayout.EAST);

@@ -7,9 +7,13 @@ package graphics;
 import cgrafica.AlgoritmoCores;
 import cgrafica.AlgoritmoCores.OrigemCarro;
 import cgrafica.Main;
+
 import java.awt.Color;
 import java.util.ArrayList;
+
 import javax.media.opengl.GL2;
+
+import com.jogamp.graph.font.Font;
 
 /**
  * 
@@ -44,13 +48,19 @@ public class Road {
 
 		int inputTamanho = Main.getSegmento();
 
-		sources.add(1);
-		sources.add(4);
-		sources.add(5);
-		emissions.add(7);
-		emissions.add(7);
-		emissions.add(7);
-		straight = true;
+		for(int i = 0; i < 1;i++){
+			for(int j = 0; j < 3; j ++){
+				sources.add(Main.font[i][j]);	
+			}
+		}
+		
+		for(int i = 1; i < 2;i++){
+			for(int j = 0; j < 3; j ++){
+				emissions.add(Main.font[i][j]);	
+			}
+		}
+		
+				straight = true;
 
 		// //////////////////////////////////////////
 		// soma de 2 segmentos extremos

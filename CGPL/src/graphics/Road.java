@@ -218,8 +218,5 @@ public class Road
     private void nextTick()
     {
 	tick++;
-    }
-
-   
-
+    }  
 }

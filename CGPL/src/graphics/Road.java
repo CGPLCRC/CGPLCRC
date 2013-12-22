@@ -48,17 +48,22 @@ public class Road {
 
 		int inputTamanho = Main.getSegmento();
 
-		for(int i = 0; i < 1;i++){
-			for(int j = 0; j < 3; j ++){
-				sources.add(Main.font[i][j]);	
-			}
-		}
 		
-		for(int i = 1; i < 2;i++){
-			for(int j = 0; j < 3; j ++){
-				emissions.add(Main.font[i][j]);	
+			for(int j = 0; j < Main.getSegmento(); j ++){
+				if(Main.font[j][1] != -1)
+				sources.add(Main.font[j][1]);
+				
 			}
-		}
+		
+			emissions.add(7);
+	        emissions.add(7);
+	        emissions.add(7);
+	        
+//		for(int i = 1; i < 2;i++){
+//			for(int j = 0; j < 3; j ++){
+//				emissions.add(Main.font[i][j]);	
+//			}
+//		}
 		
 				straight = true;
 

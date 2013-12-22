@@ -226,13 +226,14 @@ public class Main extends JFrame implements ActionListener{
 		int i = 0;
 		int j = 0;
 		segmento = Integer.parseInt(in.readLine());
+		font = new int [segmento][2];
 		while ((line = in.readLine()) != null) {
-            j = 0;
-            for (String token : line.split("\\s*[ ]\\s*")) {
+                j = 0;
+                for (String token : line.split("\\s*[ ]\\s*")) {
                 font[i][j] = Integer.parseInt(token);
                 j++;
             }
-            i++;
+            i++;           
         }
 		in.close();
 	}
